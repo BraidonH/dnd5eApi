@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+
+
+.body {
+  height: 95vh;
+  width: 99vw;
+  background-color: #D0CEBA;
+}
+
+
+
+ul {
+  display: flex;
+  align-content: center;
+  margin: 0;
+  padding: 1rem;
+  text-decoration: none;
+  font-family: 'Antic Slab', serif;
+  text-decoration: underline;
+  font-size: 1.5rem;
+  color: #5E5768;
+  border: .3rem solid #D0CEBA;
+}
+
+ul:hover {
+  cursor: pointer;
+  animation: outline 1s ease-in-out infinite;
+}
+
+.Nav {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+
+
+
+@keyframes outline{
+  0%{border-left: .3rem solid #5E5768;}
+  25%{border-top: .3rem solid #5E5768;}
+  75%{border-right: .3rem solid #5E5768;}
+  100%{border-bottom: .3rem solid #5E5768;}
+}
