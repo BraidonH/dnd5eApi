@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@500&display=swap');
+
+::-webkit-scrollbar { 
+  display: none; 
+}
 
 
-.body {
-  height: 95vh;
-  width: 99vw;
+
+html {
+  height: 100vh;
+  width: 100vw;
   background-color: #D0CEBA;
 }
 
@@ -27,12 +33,41 @@ ul:hover {
   animation: outline 1s ease-in-out infinite;
 }
 
+.dice:hover{
+  animation: rotate 900ms infinite;
+  cursor: pointer;
+}
+
 .Nav {
   display: flex;
   text-align: center;
   justify-content: center;
 }
 
+.monster { 
+  padding: .5rem;
+  text-align: center;
+  font-family: 'Encode Sans', sans-serif;
+  border-right: 1px solid black;
+  border-top-left-radius: .5rem;
+  border-bottom-left-radius: .5rem;
+}
+
+.monster:hover { 
+ cursor: pointer;
+ color: #D0CEBA;
+ animation: fade 900ms forwards linear;
+}
+
+#monsterContainer { 
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: .8rem;
+  font-family: 'Antic Slab', serif;
+  font-style: italic;
+  align-items: center;
+}
 
 
 
@@ -42,3 +77,13 @@ ul:hover {
   75%{border-right: .3rem solid #5E5768;}
   100%{border-bottom: .3rem solid #5E5768;}
 }
+
+@keyframes rotate{
+  100%{transform: rotate(360deg);}
+}
+
+@keyframes fade{
+  100%{background-color: rgb(97, 97, 97);}
+}
+
+
