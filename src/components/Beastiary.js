@@ -13,27 +13,21 @@ useEffect(() => {
 
   if(typeof props.results === 'undefined' ) {
     console.log('bitch')
-  } else {
+  } else if(props.link === 'Monsters'){
     for(let i = 0; i < props.results.length; i++) {
-      let parentDiv = document.getElementById('monsterContainer') 
+      let parentDiv = document.getElementById('items-MonsterContainer') 
       let childElement = document.createElement('div');
       parentDiv.appendChild(childElement);
-      childElement.setAttribute("class", "monster");
+      childElement.setAttribute("class", `item-monster-${props.results[i].name}`);
       childElement.innerHTML = ` ${props.results[i].name}`;
     }
-
-    // for (const index in creatures) {
-    //   let childElement = document.createElement('div');
-    //   childElement.setAttribute("class", "monster");
-    //   childElement.innerHTML = `${index}: ${creatures[index].name}`;
-    //   console.log(childElement)
-    //   console.log("ahhhhhh")
-    //  }
+  } else if(props.results && props.link != 'Monsters'){
+    console.log('wrong request')
   }
 },)
 
     return (
-      <div id="monsterContainer">
+      <div id="items-MonsterContainer">
        
       </div>
     );
