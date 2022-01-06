@@ -1,16 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@500&family=Righteous&display=swap');
 
 
-.body {
-  height: 95vh;
-  width: 99vw;
-  background-color: #D0CEBA;
+
+::-webkit-scrollbar { 
+  display: none; 
 }
 
 
 
+html {
+  height: 100vh;
+  width: 100vw;
+  background-color: #D0CEBA;
+}
+
+ 
+
+
+
+
 ul {
-  display: flex;
+  display: grid;
   align-content: center;
   margin: 0;
   padding: 1rem;
@@ -20,19 +31,95 @@ ul {
   font-size: 1.5rem;
   color: #5E5768;
   border: .3rem solid #D0CEBA;
+  
+
 }
 
-ul:hover {
+ul:hover{
   cursor: pointer;
   animation: outline 1s ease-in-out infinite;
 }
 
-.Nav {
+.dice{
+  justify-self: center;
+}
+
+.dice:hover{
+  animation: rotate 900ms infinite;
+  cursor: pointer;
+}
+
+#navContainer{
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (max-width: 35vw) {
+    text-align: left;
+  }
+}
+
+.Nav{
   display: flex;
   text-align: center;
   justify-content: center;
+  @media (max-width: 1000px) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+  }
+
+  @media (max-width: 35vw) {
+    text-align: left;
+  }
+}
+.title {
+  font-family: 'Encode Sans', sans-serif;
+  justify-self: center;
 }
 
+.input{
+  border: none;
+  background-color: rgba(201, 166, 166, 0.322);
+  padding: .4rem;
+  text-align: center;
+  font-family: 'Righteous', cursive;
+  font-size: 1rem;
+  letter-spacing: .1rem;
+  text-transform: capitalize;
+}
+
+.inputContainer{
+  display: grid;
+}
+
+[class^="item-"] { 
+  padding: .5rem;
+  text-align: center;
+  font-family: 'Righteous', cursive;
+  border-right: 1px solid black;
+  border-top-left-radius: .5rem;
+  border-bottom-left-radius: .5rem;
+}
+
+[class^="item-"]:hover { 
+ cursor: pointer;
+ color: #D0CEBA;
+ animation: fade 900ms forwards linear;
+}
+
+[id^="items-"] { 
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: .8rem;
+  font-family: 'Antic Slab', serif;
+  font-style: italic;
+  align-items: center;
+}
 
 
 
@@ -42,3 +129,13 @@ ul:hover {
   75%{border-right: .3rem solid #5E5768;}
   100%{border-bottom: .3rem solid #5E5768;}
 }
+
+@keyframes rotate{
+  100%{transform: rotate(360deg);}
+}
+
+@keyframes fade{
+  100%{background-color: rgb(97, 97, 97);}
+}
+
+

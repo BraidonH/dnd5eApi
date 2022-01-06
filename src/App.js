@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.scss';
 import Beastiary from './components/Beastiary';
 import Nav from './components/Nav'
@@ -6,11 +6,15 @@ import Spells from './components/Spells'
 import TerrianBuilder from './components/TerrianBuilder';
 import Characters from './components/Characters';
 import Equipment from './components/Equipment';
-
+import Npc from './components/Npc'
 
 function App() {
   const [link, setLink] = useState('');
   const [results, setResults] = useState()
+
+
+
+ 
 
   const apiCall = (e) => {
     let endpoint = e.target.innerHTML;
@@ -25,6 +29,7 @@ function App() {
     console.error('Error:', error);
     });
     setLink(endpoint);
+    console.log(link)
   }
 
 
@@ -33,7 +38,8 @@ function App() {
       return (
         <div className="App">
           <Nav apiCall={apiCall}/>
-          <Beastiary results={results}/>
+          <Beastiary results={results}
+          link={link}/>
         </div>
         )
         break;
@@ -57,7 +63,8 @@ function App() {
          return (
           <div className="App">
             <Nav apiCall={apiCall}/>
-             <Spells />
+             <Spells results={results}
+             link={link}/>
           </div>
           )
           break;
