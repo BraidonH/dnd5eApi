@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {Component} from 'react';
 import './App.scss';
 import Beastiary from './components/Beastiary';
 import Nav from './components/Nav'
@@ -8,45 +8,54 @@ import Characters from './components/Characters';
 import Equipment from './components/Equipment';
 import Npc from './components/Npc'
 
-function App() {
-  const [link, setLink] = useState('');
-  const [results, setResults] = useState()
+class App extends Component  {
 
+  constructor() {
+    super();
+    this.state = {
+        link: '',
+        results: []
+    };
+  }
 
 
  
 
-  const apiCall = (e) => {
+    apiCall = (e) =>  {
     let endpoint = e.target.innerHTML;
     fetch(`https://www.dnd5eapi.co/api/${endpoint}`)
     .then(response => response.json())
     .then(data => {
      for(let i = 0; i < data.results.length; i++) {
-       setResults(data.results)
+       this.setState({
+         results: data.results
+       })
      }
     })
     .catch((error) => {
     console.error('Error:', error);
     });
-    setLink(endpoint);
-    console.log(link)
+    this.setState({
+      link: endpoint
+    });
+    console.log(this.state.link)
   }
 
-
-  switch(link) {
+render() {
+   switch(this.state.link) {
     case 'Monsters':
       return (
         <div className="App">
-          <Nav apiCall={apiCall}/>
-          <Beastiary results={results}
-          link={link}/>
+          <Nav apiCall={this.apiCall}/>
+          <Beastiary results={this.state.results}
+          link={this.state.link}/>
         </div>
         )
         break;
       case 'Characters':
         return (
           <div className="App">
-            <Nav apiCall={apiCall}/>
+            <Nav apiCall={this.state.apiCall}/>
             <Characters />
           </div>
           )
@@ -54,7 +63,7 @@ function App() {
       case 'Equipment':
         return (
           <div className="App">
-            <Nav apiCall={apiCall}/>
+            <Nav apiCall={this.apiCall}/>
             <Equipment />
           </div>
           )
@@ -62,16 +71,16 @@ function App() {
       case 'Spells':
          return (
           <div className="App">
-            <Nav apiCall={apiCall}/>
-             <Spells results={results}
-             link={link}/>
+            <Nav apiCall={this.apiCall}/>
+             <Spells results={this.state.results}
+             link={this.state.link}/>
           </div>
           )
           break;
       case 'TerrianBuilder':
           return (
           <div className="App">
-           <Nav apiCall={apiCall}/>
+           <Nav apiCall={this.apiCall}/>
             <TerrianBuilder />
            </div>
           )
@@ -79,13 +88,13 @@ function App() {
       default:
         return (
           <div className="App">
-            <Nav apiCall={apiCall}/>
-            <h1>{link}</h1>
+            <Nav apiCall={this.apiCall}/>
+            <h1>{this.state.link}</h1>
           </div>
         );
   }
+ }
 }
-
 
 
 export default App;

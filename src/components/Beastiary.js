@@ -13,8 +13,9 @@ useEffect(() => {
 
   if(typeof props.results === 'undefined' ) {
     console.log('bitch')
-  } else if(props.link === 'Monsters'){
+  } else if(props.results && props.link === 'Monsters'){
     for(let i = 0; i < props.results.length; i++) {
+      setCreatures(props.link)
       let parentDiv = document.getElementById('items-MonsterContainer') 
       let childElement = document.createElement('div');
       parentDiv.appendChild(childElement);

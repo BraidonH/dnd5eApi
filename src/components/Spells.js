@@ -19,7 +19,7 @@ if(typeof props.results === 'undefined' ) {
 } else {
   console.log('wrong request')
 }
-}, [props.link])
+}, )
 
 
     return (
