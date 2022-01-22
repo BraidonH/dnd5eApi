@@ -1,13 +1,38 @@
 import '../App.scss';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const Equipment = (props) => {
-const [creatures, setCreatures] = useState('creature');
+const [equipment, setEquipment] = useState();
+
+
+useEffect(() => {
+  props.setData(setEquipment, props.link)  
+}, [])
+
+if(!equipment) {
+    
+  console.log('uh oh')
+} else if(equipment){
+  for(let i = 0; i < equipment.length; i++) {
+    let parentDiv = document.getElementById('items-EquipmentContainer') 
+    let childElement = document.createElement('div');
+    parentDiv.appendChild(childElement);
+    childElement.setAttribute("class", `item-equipment-${equipment[i].name}`);
+    childElement.innerHTML = ` ${equipment[i].name}`;
+   }
+} else if(props.link !== 'Equipment'){
+  console.log("Logged Prop is incorrect");
+}
+
+
+
+
 
 
     return (
-      <div>
-        Equipment
+
+
+      <div id="items-EquipmentContainer">
       </div>
     );
   }

@@ -17,7 +17,12 @@ html {
 
  
 
+// #root {
+//   background-image: url("./assests/scroll.jpg");
+//   background-repeat: no-repeat;
+//   background-size: cover;
 
+// }
 
 
 ul {
@@ -41,7 +46,7 @@ ul:hover{
 }
 
 .dice{
-  justify-self: center;
+ padding-left: 3.8rem;
 }
 
 .dice:hover{
@@ -52,13 +57,14 @@ ul:hover{
 #navContainer{
   display: grid;
   align-items: center;
+  justify-items: start;
   grid-template-columns: repeat(4, 1fr);
   @media (max-width: 1000px) {
     grid-template-columns: repeat(1, 1fr);
   }
 
-  @media (max-width: 35vw) {
-    text-align: left;
+  @media (max-width: 30vw) {
+    text-align: center;
   }
 }
 
@@ -78,8 +84,10 @@ ul:hover{
 }
 .title {
   font-family: 'Encode Sans', sans-serif;
-  justify-self: center;
+  padding-left: 1.5rem;
+ 
 }
+
 
 .input{
   border: none;
@@ -135,7 +143,7 @@ ul:hover{
 }
 
 @keyframes fade{
-  100%{background-color: rgb(97, 97, 97);}
+  100%{background-color: black;}
 }
 
 

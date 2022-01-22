@@ -6,26 +6,29 @@ const [creatures, setCreatures] = useState();
 
 
 
-
-
 useEffect(() => {
+  props.setData(setCreatures, props.link)  
+}, [])
 
+console.log(creatures);
 
-  if(typeof props.results === 'undefined' ) {
-    console.log('bitch')
-  } else if(props.results && props.link === 'Monsters'){
-    for(let i = 0; i < props.results.length; i++) {
-      setCreatures(props.link)
+  if(!creatures) {
+    
+    console.log('uh oh')
+  } else if(creatures){
+    
+    for(let i = 0; i < creatures.length; i++) {
       let parentDiv = document.getElementById('items-MonsterContainer') 
       let childElement = document.createElement('div');
       parentDiv.appendChild(childElement);
-      childElement.setAttribute("class", `item-monster-${props.results[i].name}`);
-      childElement.innerHTML = ` ${props.results[i].name}`;
-    }
-  } else if(props.results && props.link != 'Monsters'){
-    console.log('wrong request')
+      childElement.setAttribute("class", `item-monster-${creatures[i].name}`);
+      childElement.innerHTML = ` ${creatures[i].name}`;
+      childElement.addEventListener("click", function()  {props.infoSelect(props.link.toLowerCase(), childElement.innerHTML.toLowerCase().replace(/\s+/g, '-'))})
+     }
+  } else if(props.link !== 'Monsters'){
+    console.log("Logged Prop is incorrect");
   }
-},)
+
 
     return (
       <div id="items-MonsterContainer">
