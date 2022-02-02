@@ -10,7 +10,6 @@ useEffect(() => {
   props.setData(setCreatures, props.link)  
 }, [])
 
-console.log(creatures);
 
   if(!creatures) {
     
@@ -22,7 +21,7 @@ console.log(creatures);
       let childElement = document.createElement('div');
       parentDiv.appendChild(childElement);
       childElement.setAttribute("class", `item-monster-${creatures[i].name}`);
-      childElement.innerHTML = ` ${creatures[i].name}`;
+      childElement.innerHTML = ` ${creatures[i].index}`;
       childElement.addEventListener("click", function()  {props.infoSelect(props.link.toLowerCase(), childElement.innerHTML.toLowerCase().replace(/\s+/g, '-'))})
      }
   } else if(props.link !== 'Monsters'){

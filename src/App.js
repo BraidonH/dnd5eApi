@@ -6,14 +6,16 @@ import Spells from './components/Spells'
 import TerrianBuilder from './components/TerrianBuilder';
 import Characters from './components/Characters';
 import Equipment from './components/Equipment';
-import Npc from './components/Npc'
+import Npc from './components/Npc';
+import Info from './components/Info';
 
 class App extends Component  {
 
   constructor() {
     super();
     this.state = {
-        link: ''
+        link: '', 
+        selection: []
     };
   }
 
@@ -26,7 +28,6 @@ class App extends Component  {
       link: endpoint,
       eStack: e
     });
-    console.log(this.state.link)
       }
 
 
@@ -51,7 +52,11 @@ class App extends Component  {
         .then(response => response.json())
         .then(data => {
     
-            console.log(data)
+           this.setState({
+             selection: data
+           })
+
+           console.log(this.state.selection)
     
         })
         .catch((error) => {
@@ -65,11 +70,13 @@ render() {
    switch(this.state.link) {
     case 'Monsters':
       return (
+     
         <div className="App">
           <Nav setLink={this.setLink}/>
           <Beastiary 
           link={this.state.link} setData={this.setData} infoSelect={this.infoSelect}/>
         </div>
+      
         )
       case 'Characters':
         return (
@@ -83,7 +90,7 @@ render() {
         return (
           <div className="App">
             <Nav setLink={this.setLink}/>
-            <Equipment  link={this.state.link} setData={this.setData}/>
+            <Equipment  link={this.state.link} setData={this.setData} infoSelect={this.infoSelect}/>
           </div>
           )
 
@@ -91,7 +98,7 @@ render() {
          return (
           <div className="App">
             <Nav setLink={this.setLink}/>
-             <Spells  link={this.state.link} setData={this.setData}/>
+             <Spells  link={this.state.link} setData={this.setData} infoSelect={this.infoSelect}/>
           </div>
           )
 

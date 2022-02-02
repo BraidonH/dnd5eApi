@@ -18,7 +18,8 @@ if(!equipment) {
     let childElement = document.createElement('div');
     parentDiv.appendChild(childElement);
     childElement.setAttribute("class", `item-equipment-${equipment[i].name}`);
-    childElement.innerHTML = ` ${equipment[i].name}`;
+    childElement.innerHTML = ` ${equipment[i].index}`;
+    childElement.addEventListener("click", function()  {props.infoSelect(props.link.toLowerCase(), childElement.innerHTML.toLowerCase().replace(/\s+/g, '-'))})
    }
 } else if(props.link !== 'Equipment'){
   console.log("Logged Prop is incorrect");

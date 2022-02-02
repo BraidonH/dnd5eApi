@@ -7,7 +7,7 @@ const [info, setinfo] = useState();
 
     return (
       <div id="infoContainer">
-        INFO
+     info
       </div>
     );
   }
