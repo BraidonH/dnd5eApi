@@ -1,149 +1,137 @@
-@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@500&family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans:wght@500&family=Righteous&display=swap");
 
-
-
-::-webkit-scrollbar { 
-  display: none; 
+::-webkit-scrollbar {
+  display: none;
 }
 
-
-
-html {
-  height: 100vh;
-  width: 100vw;
-  background-color: #D0CEBA;
+body {
+  background-color: #d0ceba;
 }
-
- 
-
-// #root {
-//   background-image: url("./assests/scroll.jpg");
-//   background-repeat: no-repeat;
-//   background-size: stretch;
-
-// }
-
 
 ul {
-  display: grid;
   align-content: center;
   margin: 0;
   padding: 1rem;
   text-decoration: none;
-  font-family: 'Antic Slab', serif;
+  font-family: "Antic Slab", serif;
   text-decoration: underline;
   font-size: 1.5rem;
-  color: #5E5768;
-  border: .3rem solid #D0CEBA;
-  
-
+  color: #5e5768;
+  border: 0.3rem solid #d0ceba;
 }
 
-ul:hover{
+ul:hover {
   cursor: pointer;
   animation: outline 1s ease-in-out infinite;
 }
 
-.dice{
- padding-left: 3.8rem;
-}
-
-.dice:hover{
-  animation: rotate 900ms infinite;
+.dice:hover {
+  // animation: rotate 900ms infinite;
   cursor: pointer;
 }
 
-#navContainer{
-  display: grid;
-  align-items: center;
-  justify-items: start;
-  grid-template-columns: repeat(4, 1fr);
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  @media (max-width: 30vw) {
-    text-align: center;
-  }
+#navContainer {
+  display: flex;
 }
 
-.Nav{
+#Nav {
   display: flex;
-  text-align: center;
-  justify-content: center;
-  @media (max-width: 1000px) {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    justify-content: center;
-  }
-
-  @media (max-width: 35vw) {
-    text-align: left;
-  }
+  padding: 1rem;
 }
 .title {
-  font-family: 'Encode Sans', sans-serif;
-  padding-left: 1.5rem;
- 
+  font-family: "Encode Sans", sans-serif;
 }
 
-
-.input{
+.input {
   border: none;
   background-color: rgba(201, 166, 166, 0.322);
-  padding: .4rem;
+  padding: 0.4rem;
   text-align: center;
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
   font-size: 1rem;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   text-transform: capitalize;
 }
 
-.inputContainer{
-  display: grid;
+.inputContainer {
+  display: flex;
+  justify-content: center;
 }
 
-[class^="item-"] { 
-  padding: .5rem;
+h1 {
+  font-weight: 200;
+}
+
+[class^="item-"] {
+  padding: 0.5rem;
   text-align: center;
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
   border-right: 1px solid black;
-  border-top-left-radius: .5rem;
-  border-bottom-left-radius: .5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  font-size: 1rem;
 }
 
-[class^="item-"]:hover { 
- cursor: pointer;
- color: #D0CEBA;
- animation: fade 900ms forwards linear;
+[class^="item-"]:hover {
+  cursor: pointer;
+  color: #d0ceba;
+  animation: fade 900ms forwards linear;
 }
 
-[id^="items-"] { 
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: .8rem;
-  font-family: 'Antic Slab', serif;
+[id^="items-"] {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-family: "Antic Slab", serif;
   font-style: italic;
   align-items: center;
+  justify-content: center;
 }
 
-
-
-@keyframes outline{
-  0%{border-left: .3rem solid #5E5768;}
-  25%{border-top: .3rem solid #5E5768;}
-  75%{border-right: .3rem solid #5E5768;}
-  100%{border-bottom: .3rem solid #5E5768;}
+@media screen and (max-width: 1000px) {
+  #navContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    transform: scale(0.8);
+  }
 }
 
-@keyframes rotate{
-  100%{transform: rotate(360deg);}
+@media screen and (max-width: 600px) {
+  #Nav {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-@keyframes fade{
-  100%{background-color: black;}
+@keyframes outline {
+  0% {
+    border-left: 0.3rem solid #5e5768;
+  }
+  25% {
+    border-top: 0.3rem solid #5e5768;
+  }
+  75% {
+    border-right: 0.3rem solid #5e5768;
+  }
+  100% {
+    border-bottom: 0.3rem solid #5e5768;
+  }
 }
 
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
+@keyframes fade {
+  100% {
+    background-color: black;
+  }
+}

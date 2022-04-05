@@ -1,36 +1,21 @@
-import '../App.scss';
-import React, {useState, useEffect} from 'react';
+import "../App.scss";
+import React, { useState, useEffect } from "react";
+import Input from "./Input";
 
 const Spells = (props) => {
-const [spells, setSpells] = useState();
+  const [spells, setSpells] = useState([]);
 
+  useEffect(() => {
+    props.setData(setSpells, props.link);
+  }, []);
 
-useEffect(() => {
-  props.setData(setSpells, props.link)  
-}, [])
+  return (
+    <div id="items-SpellsContainer">
+      {spells.map((spell) => {
+        return <h1 className={`item-spells-${spell.name}`}>{spell.index}</h1>;
+      })}
+    </div>
+  );
+};
 
-if(!spells) {
-    
-  console.log('uh oh')
-} else if(spells){
-  for(let i = 0; i < spells.length; i++) {
-    let parentDiv = document.getElementById('items-SpellsContainer') 
-    let childElement = document.createElement('div');
-    parentDiv.appendChild(childElement);
-    childElement.setAttribute("class", `item-spells-${spells[i].name}`);
-    childElement.innerHTML = ` ${spells[i].name}`;
-    childElement.addEventListener("click", function()  {props.infoSelect(props.link.toLowerCase(), childElement.innerHTML.toLowerCase().replace(/\s+/g, '-'))});
-   }
-} else if(props.link !== 'Spells'){
-  console.log("Logged Prop is incorrect");
-}
-
-
-    return (
-      <div id="items-SpellsContainer">
-      
-      </div>
-    );
-  }
-  
-  export default Spells;
+export default Spells;
